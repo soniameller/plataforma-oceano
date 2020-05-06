@@ -1,0 +1,26 @@
+.images {
+  position: relative;
+  text-align: center;
+}
+
+img {
+  opacity: 0.5;
+}
+
+.form {
+  position: aboslute;
+}
+
+.title {
+  font-family: 'Amatic SC', cursive;
+  font-weight: 700;
+}
+
+.centered {
+  background-color: rgba($color: white, $alpha: 0.8);
+  padding: 1em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
