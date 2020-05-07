@@ -11,7 +11,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const serveFavicon = require('serve-favicon');
 const bindUserToViewLocals = require('./middleware/bind-user-to-view-locals.js');
-const passportConfigure = require('./passport-configuration.js');
+// const passportConfigure = require('./passport-configuration.js');
 const indexRouter = require('./routes/index');
 const authenticationRouter = require('./routes/authentication');
 
@@ -30,12 +30,12 @@ app.use(
       maxAge: 60 * 60 * 24 * 15,
       sameSite: 'lax',
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production'
+      secure: process.env.NODE_ENV === 'production',
     },
     store: new (connectMongo(expressSession))({
       mongooseConnection: mongoose.connection,
-      ttl: 60 * 60 * 24
-    })
+      ttl: 60 * 60 * 24,
+    }),
   })
 );
 app.use(passport.initialize());

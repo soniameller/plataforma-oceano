@@ -1,12 +1,42 @@
 import React from 'react';
-import Navbar from 'react-bootstrap/Navbar';
+import Navbar, { NavbarText } from 'react-bootstrap/Navbar';
+import { signOut } from './../../services/authentication';
 
-export default function Nav() {
+// import { Link } from 'react-router-dom';
+
+export default function Nav(props) {
+  function handleLogOut(event) {
+    event.preventDefault();
+    signOut()
+      .then(() => {
+        props.updateUserInformation(null);
+        // props.history.push('/');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   return (
     <Navbar bg="light" expand="lg">
-      <Navbar.Brand href="#home"> Un titulo muy lindo</Navbar.Brand>
+      <Navbar.Brand className="m-2" href="/">
+        <i className="fas fa-water"></i> Hola {props.user && props.user.name}
+      </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav"></Navbar.Collapse>
+      <Navbar.Collapse id="basic-navbar-nav">
+        {(props.user && (
+          <a className="ml-auto" onClick={handleLogOut}>
+            <Navbar.Text className="m-2">Logout</Navbar.Text>
+            <i className="fas fa-sign-out-alt"></i>
+          </a>
+        )) || (
+          <a className="ml-auto" href="/signin">
+            {' '}
+            <Navbar.Text className="m-2">Ingresá</Navbar.Text>
+            <i className="fas fa-sign-in-alt"></i>
+          </a>
+        )}
+      </Navbar.Collapse>
     </Navbar>
   );
 }

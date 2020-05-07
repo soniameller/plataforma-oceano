@@ -25,8 +25,8 @@ export default function FormExample() {
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
         <Form.Group as={Col} md="3" controlId="validationCustom03">
-          <select class="custom-select">
-            <option selected>Todas las metodologías</option>
+          <select className="custom-select">
+            <option defaultValue>Todas las metodologías</option>
             <option value="1">Articulo</option>
             <option value="2">Video</option>
             <option value="3">Mapa</option>
@@ -34,16 +34,16 @@ export default function FormExample() {
           </select>
         </Form.Group>
         <Form.Group as={Col} md="3" controlId="validationCustom03">
-          <select class="custom-select">
-            <option selected>Todas las etiquetas</option>
+          <select className="custom-select">
+            <option defaultValue>Todas las etiquetas</option>
             <option value="1">One</option>
             <option value="2">Two</option>
             <option value="3">Three</option>
           </select>
         </Form.Group>
         <Form.Group as={Col} md="3" controlId="validationCustom03">
-          <select class="custom-select">
-            <option selected>Todas las categorías</option>
+          <select className="custom-select">
+            <option defaultValue>Todas las categorías</option>
             <option value="1">Primaria</option>
             <option value="2">Secundaria</option>
             <option value="3">Sin nivel específico</option>

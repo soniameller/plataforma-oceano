@@ -18,10 +18,10 @@ export default function Description() {
         </p>
       </Container>
       <div className="images d-flex justify-content-center">
-        <img src="https://source.unsplash.com/400x250/?ocean" alt="" srcset="" />
-        <img src="https://source.unsplash.com/400x250/?water" alt="" srcset="" />
-        <img src="https://source.unsplash.com/400x250/?nature,water" alt="" srcset="" />
-        <img src="https://source.unsplash.com/400x250/?nature,ocean" alt="" srcset="" />
+        <img src="https://source.unsplash.com/400x250/?ocean" alt="" srcSet="" />
+        <img src="https://source.unsplash.com/400x250/?water" alt="" srcSet="" />
+        <img src="https://source.unsplash.com/400x250/?nature,water" alt="" srcSet="" />
+        <img src="https://source.unsplash.com/400x250/?nature,ocean" alt="" srcSet="" />
         <Container className="centered">
           <FormExample />
         </Container>
