@@ -37,5 +37,3 @@ node_modules
 
 # next.js build output
 .next
-
-client/build

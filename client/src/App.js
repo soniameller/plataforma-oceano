@@ -22,22 +22,22 @@ class App extends Component {
   }
 
   componentDidMount() {
-    loadUserInformation()
-      .then((user) => {
-        this.updateUserInformation(user);
-        this.setState({
-          loaded: true,
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    // loadUserInformation()
+    //   .then((user) => {
+    //     this.updateUserInformation(user);
+    //     this.setState({
+    //       loaded: true,
+    //     });
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   }
 
   updateUserInformation(user) {
-    this.setState({
-      user,
-    });
+    // this.setState({
+    //   user,
+    // });
   }
 
   render() {
