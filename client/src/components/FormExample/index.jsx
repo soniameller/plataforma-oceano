@@ -52,7 +52,7 @@ export default function FormExample() {
       </Form.Row>
 
       <Form.Group>
-        <Form.Check type="switch" id="custom-switch" label="Incluir articulos en inglés" />
+        <Form.Check type="switch" id="custom-switch" label="Incluir artículos en inglés" />
       </Form.Group>
       <Button type="submit">Buscar</Button>
     </Form>

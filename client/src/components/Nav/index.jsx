@@ -20,7 +20,8 @@ export default function Nav(props) {
   return (
     <Navbar bg="light" expand="lg">
       <Navbar.Brand className="m-2" href="/">
-        <i className="fas fa-water"></i> Hola {props.user && props.user.name}
+        <i className="fas fa-water"></i>
+        {props.user && <Navbar.Text className="ml-3">Hola {props.user.name}</Navbar.Text>}
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">

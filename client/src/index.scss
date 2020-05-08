@@ -1,5 +1,5 @@
 // Bootstrap config
-$primary: rgb(61, 87, 124);
+$primary: rgb(47, 64, 88);
 @import '~bootstrap/scss/bootstrap';
 
 // Font config
@@ -17,4 +17,10 @@ body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.bg--white {
+  background-color: rgba($color: white, $alpha: 0.8);
+  padding: 2em;
+  margin: 2em;
 }

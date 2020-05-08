@@ -1,11 +1,11 @@
-.title {
-  font-family: 'Amatic SC', cursive;
-  font-weight: 700;
-}
-
-.centered {
+.parallex {
+  padding: 2em;
   background-image: url('./../../images/acantiladosBuenosAires.jpeg');
   background-size: cover;
   background-attachment: fixed;
-  padding: 3em;
+}
+
+.form-control {
+  display: flex;
+  // width: 80%;
 }

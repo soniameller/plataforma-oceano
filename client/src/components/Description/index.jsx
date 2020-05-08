@@ -17,14 +17,10 @@ export default function Description() {
           provident ad omnis voluptate!
         </p>
       </Container>
-      <div className="images d-flex justify-content-center">
-        <img src="https://source.unsplash.com/400x250/?ocean" alt="" srcSet="" />
-        <img src="https://source.unsplash.com/400x250/?water" alt="" srcSet="" />
-        <img src="https://source.unsplash.com/400x250/?nature,water" alt="" srcSet="" />
-        <img src="https://source.unsplash.com/400x250/?nature,ocean" alt="" srcSet="" />
-        <Container className="centered">
+      <div className="centered">
+        <div className="bg--white">
           <FormExample />
-        </Container>
+        </div>
       </div>
     </div>
   );
