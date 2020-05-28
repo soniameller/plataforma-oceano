@@ -5,6 +5,7 @@ import Home from './views/Home';
 import ProtectedRoute from './components/ProtectedRoute';
 import SignUp from './views/Authentication/SignUp';
 import SignIn from './views/Authentication/SignIn';
+import NewArticle from './views/NewArticle';
 
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { loadUserInformation } from './services/authentication';
@@ -22,22 +23,22 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // loadUserInformation()
-    //   .then((user) => {
-    //     this.updateUserInformation(user);
-    //     this.setState({
-    //       loaded: true,
-    //     });
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    loadUserInformation()
+      .then((user) => {
+        this.updateUserInformation(user);
+        this.setState({
+          loaded: true,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   updateUserInformation(user) {
-    // this.setState({
-    //   user,
-    // });
+    this.setState({
+      user,
+    });
   }
 
   render() {
@@ -48,6 +49,8 @@ class App extends Component {
             <Nav user={this.state.user} updateUserInformation={this.updateUserInformation} />
             <Switch>
               <Route path="/" exact component={Home} />
+              <Route path="/new-article" exact component={NewArticle} />
+
               <ProtectedRoute
                 path="/signup"
                 // authorized={!this.state.user}

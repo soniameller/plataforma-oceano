@@ -14,6 +14,7 @@ const bindUserToViewLocals = require('./middleware/bind-user-to-view-locals.js')
 // const passportConfigure = require('./passport-configuration.js');
 const indexRouter = require('./routes/index');
 const authenticationRouter = require('./routes/authentication');
+const articleRouter = require('./routes/article');
 
 const app = express();
 
@@ -45,6 +46,7 @@ app.use(bindUserToViewLocals);
 
 app.use('/', indexRouter);
 app.use('/authentication', authenticationRouter);
+app.use('/article', articleRouter);
 
 app.get('*', (req, res, next) => {
   res.sendFile(join(__dirname, './../client/build/index.html'));
