@@ -73,6 +73,39 @@ passport.use(
   })
 );
 
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: 'https://plataforma-oceano.herokuapp.com/authentication/google/callback',
+    },
+    (accessToken, refreshToken, profile, callback) => {
+      console.log('Google account details:', profile);
+      User.findOne({ googleId: profile.id })
+        .then((user) => {
+          if (user) {
+            return Promise.resolve(user);
+          } else {
+            return User.create({
+              googleID: profile.id,
+              name: profile.name.givenName,
+              email: profile.emails[0].value,
+            });
+          }
+        })
+        .then((user) => {
+          callback(null, user);
+        })
+        .catch((error) => {
+          callback(error);
+        });
+    }
+  )
+);
+
 // passport.use(
 //   'github',
 //   new GitHubStrategy(
@@ -80,17 +113,13 @@ passport.use(
 //       clientID: process.env.GITHUB_CLIENT_ID,
 //       clientSecret: process.env.GITHUB_CLIENT_SECRET,
 //       callbackURL: 'http://localhost:3000/authentication/github-callback',
-//       scope: 'user:email'
+//       scope: 'user:email',
 //     },
 //     (accessToken, refreshToken, profile, callback) => {
-//       const {
-//         displayName: name,
-//         emails,
-//         photos: [{ value: photo } = {}] = []
-//       } = profile;
-//       const primaryEmail = emails.find(email => email.primary).value;
+//       const { displayName: name, emails, photos: [{ value: photo } = {}] = [] } = profile;
+//       const primaryEmail = emails.find((email) => email.primary).value;
 //       User.findOne({ email: primaryEmail })
-//         .then(user => {
+//         .then((user) => {
 //           if (user) {
 //             return Promise.resolve(user);
 //           } else {
@@ -98,14 +127,14 @@ passport.use(
 //               email: primaryEmail,
 //               photo,
 //               name,
-//               githubToken: accessToken
+//               githubToken: accessToken,
 //             });
 //           }
 //         })
-//         .then(user => {
+//         .then((user) => {
 //           callback(null, user);
 //         })
-//         .catch(error => {
+//         .catch((error) => {
 //           callback(error);
 //         });
 //     }

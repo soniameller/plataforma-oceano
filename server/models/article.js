@@ -37,6 +37,7 @@ const schema = new mongoose.Schema({
       'photograph',
       'unit',
       'video',
+      'none',
     ],
   },
 });

@@ -23,8 +23,9 @@ const signIn = (data) =>
         const user = result.data.user;
         resolve(user);
       })
-      .catch(alert);
-    // .catch(reject);
+      .catch((error) => {
+        alert(error.response.data.error.message);
+      });
   });
 
 const signOut = () =>

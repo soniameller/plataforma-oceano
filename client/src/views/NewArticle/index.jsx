@@ -1,5 +1,8 @@
+import './style.scss';
 import React, { Component } from 'react';
+import Form from 'react-bootstrap/Form';
 import { createArticle } from '../../services/article';
+import Button from 'react-bootstrap/Button';
 
 class NewArticle extends Component {
   constructor(props) {
@@ -53,6 +56,9 @@ class NewArticle extends Component {
   }
 
   handleInputChange(event) {
+    //TODO - Fix the form to make this work
+    console.log('event.target.name', event.target.name);
+    console.log('event.target.value', event.target.value);
     const { value, name } = event.target;
     this.setState({
       [name]: value,
@@ -60,71 +66,88 @@ class NewArticle extends Component {
   }
 
   render() {
-    const user = this.props.user;
     return (
-      <div>
-        {/* <figure>
-          <img src={user.picture} alt={user.name} />
-        </figure> */}
+      <div className="article">
+        <Form className="article__form" onSubmit={this.handleFormSubmission}>
+          <Form.Group controlId="title">
+            <Form.Label>Título</Form.Label>
+            <Form.Control
+              type="text"
+              name="title"
+              placeholder="Título"
+              onChange={this.handleInputChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="website_url">
+            <Form.Label>URL Pagina web</Form.Label>
+            <Form.Control
+              name="website_url"
+              type="url"
+              placeholder="URL Pagina web"
+              onChange={this.handleInputChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="description">
+            <Form.Label>Descripción</Form.Label>
+            <Form.Control
+              as="textarea"
+              rows="3"
+              name="description"
+              placeholder="Breve descripción del artículo..."
+              onChange={this.handleInputChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="article">
+            <Form.Label>Artículo</Form.Label>
+            <Form.Control
+              as="textarea"
+              rows="5"
+              name="article"
+              placeholder="Artículo completo..."
+              onChange={this.handleInputChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="category">
+            <Form.Label>Categoría</Form.Label>
+            <Form.Control
+              as="select"
+              name="category"
+              defaultValue="default"
+              onChange={this.handleInputChange}
+            >
+              <option value="default" disabled>
+                Selecciona una categoría
+              </option>
 
-        <form onSubmit={this.handleFormSubmission}>
-          <label htmlFor="title">Título</label>
-          <input
-            id="title"
-            name="title"
-            type="text"
-            placeholder="Título"
-            onChange={this.handleInputChange}
-          />
-          <label htmlFor="description">Descripción</label>
-          <input
-            id="description"
-            name="description"
-            type="text"
-            placeholder="Descripción"
-            onChange={this.handleInputChange}
-          />
-          <label htmlFor="website_url">URL Pagina web</label>
-          <input
-            id="website_url"
-            name="website_url"
-            type="text"
-            placeholder="URL Pagina web"
-            onChange={this.handleInputChange}
-          />
-          <label htmlFor="article">Artículo</label>
-          <input
-            id="article"
-            name="article"
-            type="text"
-            placeholder="Artículo"
-            onChange={this.handleInputChange}
-          />
-          <label htmlFor="category">Categoría</label>
-          <input
-            id="category"
-            name="category"
-            type="text"
-            placeholder="Categoría"
-            onChange={this.handleInputChange}
-          />
-          <label htmlFor="methodology">Metodología</label>
-          <input
-            id="methodology"
-            name="methodology"
-            type="text"
-            placeholder="Metodología"
-            onChange={this.handleInputChange}
-          />
-          <label htmlFor="picture_url">Imagen</label>
-          <input
-            type="file"
-            id="picture_url"
-            name="picture_url"
-            onChange={this.handleFileInputChange}
-          />
-          <button>Crear!</button>
-        </form>
+              <option value="none">Sin categoría específica</option>
+              <option value="primary">Primaria</option>
+              <option value="secondary">Segundaria</option>
+            </Form.Control>
+          </Form.Group>
+          <Form.Group controlId="methodology">
+            <Form.Label>Metodología</Form.Label>
+            <Form.Control
+              as="select"
+              defaultValue="default"
+              name="methodology"
+              onChange={this.handleInputChange}
+            >
+              <option value="default" disabled>
+                Selecciona una metodología
+              </option>
+              <option value="none">Sin metodología específica</option>
+              <option value="article">Artículo</option>
+              <option value="collection">Colección</option>
+              <option value="infographic">Infografía</option>
+              <option value="lesson">Lección</option>
+              <option value="map">Mapa</option>
+              <option value="photograph">Fotografía</option>
+              <option value="unit">Unidad</option>
+              <option value="video">Video</option>
+            </Form.Control>
+          </Form.Group>
+          <Button>Crear</Button>
+        </Form>
       </div>
     );
   }

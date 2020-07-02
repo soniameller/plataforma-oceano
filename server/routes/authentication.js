@@ -1,5 +1,7 @@
-'use strict';
+// 'use strict';
 const { Router } = require('express');
+const passport = require('passport');
+
 require('./../passport-configuration.js');
 const User = require('./../models/user');
 const bcryptjs = require('bcryptjs');
@@ -60,28 +62,24 @@ router.get('/user-information', (req, res, next) => {
   res.json({ user: req.user || null });
 });
 
-// router.post(
-//   '/sign-up',
-//   passport.authenticate('github', {
-//     successRedirect: '/private',
-//     failureRedirect: '/sign-up'
-//   })
-// );
+router.get(
+  '/google',
+  passport.authenticate('google', {
+    scope: [
+      'https://www.googleapis.com/auth/userinfo.profile',
+      'https://www.googleapis.com/auth/userinfo.email',
+    ],
+  })
+);
 
-// router.get(
-//   '/github',
-//   passport.authenticate('github', {
-//     successRedirect: '/private',
-//     failureRedirect: '/authentication/sign-in'
-//   })
-// );
+router.get(
+  '/google/callback',
+  passport.authenticate('google', {
+    successRedirect: 'https://plataforma-oceano.herokuapp.com/',
+    failureRedirect: 'https://plataforma-oceano.herokuapp.com/signin', // here you would redirect to the login page using traditional login approach
+  })
+);
 
-// router.get(
-//   '/github-callback',
-//   passport.authenticate('github', {
-//     successRedirect: '/private',
-//     failureRedirect: '/authentication/sign-in'
-//   })
-// );
+// FIREBASE
 
 module.exports = router;

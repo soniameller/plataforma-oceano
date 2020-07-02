@@ -51,6 +51,7 @@ class SignIn extends Component {
                 defaultValue={this.state.email}
               />
             </Form.Group>
+
             <Form.Group as={Col} md="3" controlId="password">
               <Form.Control
                 required
@@ -61,8 +62,21 @@ class SignIn extends Component {
                 defaultValue={this.state.password}
               />
             </Form.Group>
+            {/* <Form.Text className="text-muted">
+              En el futuro tendremos mensajes cuando pones mal la info
+            </Form.Text> */}
           </Form.Row>
-          <Button type="submit">Ingresá</Button>
+          <Button className="mr-1" type="submit">
+            Ingresá
+          </Button>
+          <Button type="submit">
+            <a
+              className="btn-primary"
+              href="https://plataforma-oceano.herokuapp.com/authentication/google"
+            >
+              Ingresá con Google
+            </a>
+          </Button>
         </Form>
 
         <p>Todavía no tenes una cuenta?</p>
