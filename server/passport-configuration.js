@@ -87,7 +87,6 @@ passport.use(
       User.findOne({ googleID: profile.id })
         .then((user) => {
           if (user) {
-            req.session.user = user._id;
             return Promise.resolve(user);
           } else {
             return User.create({
@@ -98,7 +97,6 @@ passport.use(
           }
         })
         .then((user) => {
-          req.session.user = user._id;
           callback(null, user);
         })
         .catch((error) => {
