@@ -84,7 +84,7 @@ passport.use(
     },
     (accessToken, refreshToken, profile, callback) => {
       console.log('Google account details:', profile);
-      User.findOne({ googleId: profile.id })
+      User.findOne({ googleID: profile.id })
         .then((user) => {
           if (user) {
             return Promise.resolve(user);
